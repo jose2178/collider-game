@@ -20,4 +20,10 @@ public class GameController : MonoBehaviour {
         SceneManager.LoadScene(escena);
     }
 
+    public void CerrarJuego()
+    {
+        Application.Quit();
+        Debug.Log("Has salido del juego");
+    }
+
 }
