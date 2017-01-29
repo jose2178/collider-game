@@ -1,13 +1,9 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[DisallowMultipleComponent]
-[RequireComponent(typeof(NavMeshAgent))]
-
-public class PlayerMovementNavMesh : MonoBehaviour {
+public class PlayerController : MonoBehaviour {
 
     private Vector3 targetPosition;
 
@@ -19,20 +15,22 @@ public class PlayerMovementNavMesh : MonoBehaviour {
     {
         agent = GetComponent<NavMeshAgent>();
     }
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         targetPosition = transform.position;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
         if (Input.GetMouseButton(LEFT_MOUSE_BUTTON))
         {
             SetTargetPosition();
         }
 
         MovePlayer();
-	}
+    }
 
     private void SetTargetPosition()
     {
