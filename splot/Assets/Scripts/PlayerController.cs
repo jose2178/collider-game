@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour {
     //creando instancias de enemigos, perro, GameController.
     private PatrolDog dog;
     private PatrolEnemy enemy;
-    private GameController gameController;
+    //private GameController gameController;
     
     
 
@@ -35,15 +35,16 @@ public class PlayerController : MonoBehaviour {
         scoreText.text = "Puntos: " + score;
         lifeText.text = "Vidas: " + lifes;
 
+        agent = GetComponent<NavMeshAgent>();
         dog = GameObject.FindWithTag("Dog").GetComponent<PatrolDog>();
         enemy = GameObject.FindWithTag("Enemy").GetComponent<PatrolEnemy>();
-        gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+        //gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         gameOver = GameObject.FindWithTag("Gameover");
 
         gameOver.SetActive(false);
         
         agent = GetComponent<NavMeshAgent>();
-        targetPosition = transform.position;
+        targetPosition = this.transform.position;
     }
 
     void Update()
@@ -73,6 +74,7 @@ public class PlayerController : MonoBehaviour {
     {
         Destroy(other.gameObject);
         score++;
+        Debug.Log(score);
         scoreText.text = "Puntos: " + score;
     }
 

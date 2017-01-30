@@ -15,10 +15,14 @@ public class PatrolDog : MonoBehaviour {
     private Vector3 lastAgentVelocity;
     private NavMeshPath lastAgentPath;
 
+    Animator anim;
+    int velocidad = Animator.StringToHash("Velocidad");
+
     void Start()
     {
-        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-
+        agent = GetComponent<NavMeshAgent>();
+        anim = GetComponent<Animator>();
+        
         // Disabling auto-braking allows for continuous movement
         // between points (ie, the agent doesn't slow down as it
         // approaches a destination point).
@@ -34,17 +38,19 @@ public class PatrolDog : MonoBehaviour {
         // Returns if no points have been set up
         if (points.Length == 0)
             return;
-
+        
         // Set the agent to go to the currently selected destination.
         //agent.destination = points[destPoint].position;
         position = points[destPoint].position;
         agent.SetDestination(position);
         //Instantiate(prueba, pruebaPosicion.position, Quaternion.identity);
-
+        
         // Choose the next point in the array as the destination,
         // cycling to the start if necessary.
         //destPoint = (destPoint + 1) % points.Length;
         StartCoroutine(TimePoint());
+        
+
     }
 
     IEnumerator TimePoint()
@@ -64,12 +70,24 @@ public class PatrolDog : MonoBehaviour {
 
     void Update()
     {
+        
+        
         // Choose the next destination point when the agent gets
         // close to the current one.
         if (agent.remainingDistance < 0.4f)
         {
             GotoNextPoint();
         }
+
+        if (agent.velocity.z < 0.5 && agent.velocity.z == 0)
+        {
+            anim.SetFloat(velocidad, -1f);
+        }
+        else
+        {
+            anim.SetFloat(velocidad, 1f);
+        }
+
 
     }
 }
