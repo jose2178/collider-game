@@ -1,0 +1,154 @@
+fileFormatVersion: 2
+guid: 5b460787bbb89034195bb36406339944
+timeCreated: 1485741719
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Andenes
+    100002: ArbolCopa
+    100004: Arboldoblecopas
+    100006: ArbolTripleCopa
+    100008: Arbustos
+    100010: CanecasBasura
+    100012: Capillas
+    100014: Faroles
+    100016: Flores
+    100018: Fuentes
+    100020: Muros
+    100022: //RootNode
+    100024: Pinos
+    100026: Plano
+    100028: Rocas
+    100030: Sillas
+    400000: Andenes
+    400002: ArbolCopa
+    400004: Arboldoblecopas
+    400006: ArbolTripleCopa
+    400008: Arbustos
+    400010: CanecasBasura
+    400012: Capillas
+    400014: Faroles
+    400016: Flores
+    400018: Fuentes
+    400020: Muros
+    400022: //RootNode
+    400024: Pinos
+    400026: Plano
+    400028: Rocas
+    400030: Sillas
+    2300000: Andenes
+    2300002: ArbolCopa
+    2300004: Arboldoblecopas
+    2300006: ArbolTripleCopa
+    2300008: Arbustos
+    2300010: CanecasBasura
+    2300012: Capillas
+    2300014: Faroles
+    2300016: Flores
+    2300018: Fuentes
+    2300020: Muros
+    2300022: Pinos
+    2300024: Plano
+    2300026: Rocas
+    2300028: Sillas
+    3300000: Andenes
+    3300002: ArbolCopa
+    3300004: Arboldoblecopas
+    3300006: ArbolTripleCopa
+    3300008: Arbustos
+    3300010: CanecasBasura
+    3300012: Capillas
+    3300014: Faroles
+    3300016: Flores
+    3300018: Fuentes
+    3300020: Muros
+    3300022: Pinos
+    3300024: Plano
+    3300026: Rocas
+    3300028: Sillas
+    4300000: Arboldoblecopas
+    4300002: Fuentes
+    4300004: Flores
+    4300006: Andenes
+    4300008: Plano
+    4300010: CanecasBasura
+    4300012: ArbolCopa
+    4300014: Muros
+    4300016: ArbolTripleCopa
+    4300018: Faroles
+    4300020: Rocas
+    4300022: Pinos
+    4300024: Arbustos
+    4300026: Sillas
+    4300028: Capillas
+    7400000: Default Take
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 1
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
