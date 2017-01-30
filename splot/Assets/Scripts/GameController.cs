@@ -5,15 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
 
-    
+
     void Start () {
-        		
+       
 	}
 
     void Update()
     {
-        
+    
     }
+
 
     public void CambiarScena(int escena)
     {
@@ -25,5 +26,7 @@ public class GameController : MonoBehaviour {
         Application.Quit();
         Debug.Log("Has salido del juego");
     }
+
+    
 
 }

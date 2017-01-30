@@ -15,64 +15,61 @@ public class DogAI : MonoBehaviour {
      * 
      */
 
-    private Vector3 targetPosition;
+    Vector3 targetPosition;
+    Vector3 posicionAleatoria;
 
     [SerializeField]
-    private GameObject prefabPoop;
-
-    [SerializeField]
-    GameObject targetCollider;
+    GameObject prefabPoop;
 
     [SerializeField]
     Transform dogTail;
 
     NavMeshAgent agent;
+    
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        //targetPosition = new Vector3(10, 0 , 10);
-        
-
-        //Establece posicion aleatoria con tiempo de espera.
-        InvokeRepeating("SetTargetPosition", 3, 5);
+        posicionAleatoria = agent.transform.position;
         
     }
 
-    void OnTriggerEnter(Collider other)
+    void Update()
     {
-        Destroy(other.gameObject);
+        
+        if ((agent.transform.position.x == posicionAleatoria.x) && (agent.transform.position.z == posicionAleatoria.z))
+        {
+            posicionAleatoria = RandomPosition();
+            StartCoroutine(TiempoEspera());           
+        }
+        
+    }
+
+    IEnumerator TiempoEspera()
+    {        
+        yield return new WaitForSeconds(4f);
+        SetTargetPosition(posicionAleatoria);       
+    }
+
+    // Este metodo Asigna la posicion y mueve al Perro.
+    private void SetTargetPosition(Vector3 pos)
+    {        
+        agent.SetDestination(pos);
         InstantiatePoop();
     }
 
-    
-
-    private void SetTargetPosition()
-    {
-        Vector3 position = RandomPosition();
-        agent.SetDestination(position);
-
-        InstantiateTargetCollider(position);
-    }
-
-
+    //Este metodo Genera un Vector3 alatorio.
     private Vector3 RandomPosition()
     {
-        targetPosition = new Vector3(Random.Range(0,15), 0, Random.Range(0,15));
-
+        targetPosition = new Vector3(Random.Range(-10,10), 0, Random.Range(-10,10));
         return targetPosition;
     }
 
-    private void InstantiateTargetCollider( Vector3 positionPoop)
-    {
-        Instantiate(targetCollider, targetPosition, Quaternion.identity);
-    }
-
+    //Se instancia el prefab Poop en la posicion del dogTail adjunto al GameObject Dog.
     private void  InstantiatePoop()
     {
         Instantiate(prefabPoop,new Vector3(dogTail.position.x, 0.5f, dogTail.position.z), Quaternion.identity);
     }
 
 
-    
 }
