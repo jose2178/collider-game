@@ -16,7 +16,7 @@ public class PatrolEnemy : MonoBehaviour {
     private PlayerController player;
 
     [HideInInspector]
-    public int counterLifes;
+    //public int counterLifes;
 
     private Vector3 lastAgentVelocity;
     private NavMeshPath lastAgentPath;
@@ -34,7 +34,7 @@ public class PatrolEnemy : MonoBehaviour {
         //gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         anim = GetComponent<Animator>();
-        counterLifes = player.lifes;
+        //counterLifes = player.lifes;
         // Disabling auto-braking allows for continuous movement
         // between points (ie, the agent doesn't slow down as it
         // approaches a destination point).
@@ -75,7 +75,8 @@ public class PatrolEnemy : MonoBehaviour {
     {
         soundEnemy.Play();
         Destroy(other.gameObject);
-        counterLifes--;
+
+        player.lifes--;
         
     }
 

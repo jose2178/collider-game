@@ -69,19 +69,25 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
-        if(enemy.counterLifes > 0)
+        if(lifes > 0)
         {
-            lifeText.text = "Vidas: " + enemy.counterLifes;
+            //lifeText.text = "Vidas: " + enemy.counterLifes;
+            lifeText.text = "Vidas: " + lifes;
         }
 
         if (Input.GetMouseButton(LEFT_MOUSE_BUTTON))
         {
             SetTargetPosition();
         }
-        else if (enemy.counterLifes <= 0 && condicionSonido)
+        else if (lifes <= 0 && condicionSonido)
         {
             lifeText.text = "";
             scoreText.text = "";
+
+            enemyScene.SetActive(false);
+            dogScene.SetActive(false);
+            menuButton.SetActive(false);
+
 
             audioSource.playOnAwake = false;
             audioSource.clip = perdiste;
@@ -89,9 +95,7 @@ public class PlayerController : MonoBehaviour {
             //StopAgents();
             
             StartCoroutine(RetrasoGameOver());
-            enemyScene.SetActive(false);
-            dogScene.SetActive(false);
-            menuButton.SetActive(false);
+            
             finalScore.text = "Score: " + score;
 
             condicionSonido = false;

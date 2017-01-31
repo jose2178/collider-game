@@ -66,7 +66,7 @@ public class PatrolDog : MonoBehaviour {
         agent.Stop();
         yield return new WaitForSeconds(rateTime);
         SetPoint();
-        Instantiate(poop, dogTail.position, Quaternion.identity);
+        Instantiate(poop, dogTail.position, Quaternion.Euler(-90,0,0));
         sonidoCaca.Play();
         if (firstTime)
         {
