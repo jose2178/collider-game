@@ -25,13 +25,15 @@ public class PatrolEnemy : MonoBehaviour {
 
     private AudioSource soundEnemy;
 
+    Animator anim;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         soundEnemy = GetComponent<AudioSource>();
         //gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-
+        anim = GetComponent<Animator>();
         counterLifes = player.lifes;
         // Disabling auto-braking allows for continuous movement
         // between points (ie, the agent doesn't slow down as it
@@ -40,16 +42,32 @@ public class PatrolEnemy : MonoBehaviour {
         firstTime = true;
         rateTime = rateTime + 2;
         GotoNextPoint();
+
+        
     }
 
     void Update()
-    {       
+    {
         // Choose the next destination point when the agent gets
         // close to the current one.
         if (agent.remainingDistance < 0.4f)
         {
-            GotoNextPoint();            
+
+            GotoNextPoint();
         }
+
+        
+        if (agent.velocity.x != 0 || agent.velocity.z != 0)
+        {
+            anim.SetBool("caminar", true);
+            
+        }
+        else if (agent.velocity.x  == 0 || agent.velocity.z == 0)
+        {
+            
+            anim.SetBool("caminar", false);
+        }
+
         Debug.DrawLine(agent.transform.position, position, Color.red);
     }
 

@@ -101,14 +101,15 @@ public class PlayerController : MonoBehaviour {
         {
             MovePlayer();
         }
-
-        if (agent.velocity.z < 0.5 && agent.velocity.z == 0)
-        {
-            anim.SetFloat(velocidad, -1f);
-        }
-        else
+        //agent.velocity != new Vector3(0, 0, 0)
+            //agent.velocity.z < 0.5 && agent.velocity.z == 0
+        if (agent.velocity.x != 0 || agent.velocity.z != 0)
         {
             anim.SetFloat(velocidad, 1f);
+        }
+        else if(agent.velocity.x == 0 || agent.velocity.z == 0)
+        {
+            anim.SetFloat(velocidad, -1f);
         }
 
     }
