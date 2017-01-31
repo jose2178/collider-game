@@ -27,6 +27,8 @@ public class PatrolEnemy : MonoBehaviour {
 
     Animator anim;
 
+    private GameObject expresion;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -34,6 +36,7 @@ public class PatrolEnemy : MonoBehaviour {
         //gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         anim = GetComponent<Animator>();
+        expresion = transform.Find("Expresion").gameObject;
         //counterLifes = player.lifes;
         // Disabling auto-braking allows for continuous movement
         // between points (ie, the agent doesn't slow down as it
@@ -43,6 +46,7 @@ public class PatrolEnemy : MonoBehaviour {
         rateTime = rateTime + 2;
         GotoNextPoint();
 
+        expresion.SetActive(false);
         
     }
 
@@ -73,7 +77,10 @@ public class PatrolEnemy : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
+        expresion.SetActive(true);
+        expresion.transform.LookAt(Camera.main.transform.position);
         soundEnemy.Play();
+        StartCoroutine(TimeGroser());
         Destroy(other.gameObject);
 
         player.lifes--;
@@ -105,6 +112,12 @@ public class PatrolEnemy : MonoBehaviour {
         }
         SetPoint();
         agent.Resume();
+    }
+
+    IEnumerator TimeGroser()
+    {
+        yield return new WaitForSeconds(1.5f);
+        expresion.SetActive(false);
     }
 
     void SetPoint()
