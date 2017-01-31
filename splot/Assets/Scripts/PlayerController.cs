@@ -37,7 +37,9 @@ public class PlayerController : MonoBehaviour {
     private GameObject enemyScene;
     private GameObject dogScene;
     private GameObject menuButton;
-    
+
+    private Animator anim;
+    int velocidad = Animator.StringToHash("velocidadPlayer");
 
     void Start()
     {
@@ -51,6 +53,8 @@ public class PlayerController : MonoBehaviour {
         enemyScene = GameObject.FindWithTag("Enemy");
         dogScene = GameObject.FindWithTag("Dog");
         menuButton = GameObject.FindWithTag("MenuButton");
+
+        anim = GetComponent<Animator>();
         //gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         gameOver = GameObject.FindWithTag("Gameover");
         audioSource = GetComponent<AudioSource>();
@@ -96,6 +100,15 @@ public class PlayerController : MonoBehaviour {
         else
         {
             MovePlayer();
+        }
+
+        if (agent.velocity.z < 0.5 && agent.velocity.z == 0)
+        {
+            anim.SetFloat(velocidad, -1f);
+        }
+        else
+        {
+            anim.SetFloat(velocidad, 1f);
         }
 
     }
