@@ -60,17 +60,18 @@ public class PatrolEnemy : MonoBehaviour {
             GotoNextPoint();
         }
 
-        
-        if (agent.velocity.x != 0 || agent.velocity.z != 0)
-        {
-            anim.SetBool("caminar", true);
-            
-        }
-        else if (agent.velocity.x  == 0 || agent.velocity.z == 0)
-        {
-            
-            anim.SetBool("caminar", false);
-        }
+        expresion.transform.LookAt(Camera.main.transform.position);
+
+        //if (agent.velocity.x != 0 || agent.velocity.z != 0)
+        //{
+        //    anim.SetBool("caminar", true);
+
+        //}
+        //else if (agent.velocity.x  == 0 || agent.velocity.z == 0)
+        //{
+
+        //    anim.SetBool("caminar", false);
+        //}
 
         Debug.DrawLine(agent.transform.position, position, Color.red);
     }
@@ -78,7 +79,7 @@ public class PatrolEnemy : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
         expresion.SetActive(true);
-        expresion.transform.LookAt(Camera.main.transform.position);
+        
         soundEnemy.Play();
         StartCoroutine(TimeGroser());
         Destroy(other.gameObject);
@@ -107,7 +108,7 @@ public class PatrolEnemy : MonoBehaviour {
         yield return new WaitForSeconds(rateTime);
         if (firstTime)
         {
-            rateTime -= 2;
+            rateTime = 0;
             firstTime = false;
         }
         SetPoint();
@@ -116,7 +117,7 @@ public class PatrolEnemy : MonoBehaviour {
 
     IEnumerator TimeGroser()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         expresion.SetActive(false);
     }
 
