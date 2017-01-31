@@ -33,7 +33,10 @@ public class PlayerController : MonoBehaviour {
     public AudioClip perdiste;
     public AudioClip risa;
     public AudioSource recoger;
-    
+
+    private GameObject enemyScene;
+    private GameObject dogScene;
+    private GameObject menuButton;
     
 
     void Start()
@@ -45,6 +48,9 @@ public class PlayerController : MonoBehaviour {
         agent = GetComponent<NavMeshAgent>();
         dog = GameObject.FindWithTag("Dog").GetComponent<PatrolDog>();
         enemy = GameObject.FindWithTag("Enemy").GetComponent<PatrolEnemy>();
+        enemyScene = GameObject.FindWithTag("Enemy");
+        dogScene = GameObject.FindWithTag("Dog");
+        menuButton = GameObject.FindWithTag("MenuButton");
         //gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         gameOver = GameObject.FindWithTag("Gameover");
         audioSource = GetComponent<AudioSource>();
@@ -59,21 +65,29 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
-        lifeText.text = "Vidas: " + enemy.counterLifes;
+        if(enemy.counterLifes > 0)
+        {
+            lifeText.text = "Vidas: " + enemy.counterLifes;
+        }
 
         if (Input.GetMouseButton(LEFT_MOUSE_BUTTON))
         {
             SetTargetPosition();
         }
-        else if (enemy.counterLifes == 0 && condicionSonido)
+        else if (enemy.counterLifes <= 0 && condicionSonido)
         {
-            audioSource.loop = false;
+            lifeText.text = "";
+            scoreText.text = "";
+
             audioSource.playOnAwake = false;
             audioSource.clip = perdiste;
-            audioSource.Play();            
-            //Cambia a escena de reiniciar o pued invocar un canvas con un mensaje.
-            StopAgents();
+            audioSource.Play();
+            //StopAgents();
+            
             StartCoroutine(RetrasoGameOver());
+            enemyScene.SetActive(false);
+            dogScene.SetActive(false);
+            menuButton.SetActive(false);
             finalScore.text = "Score: " + score;
 
             condicionSonido = false;
@@ -114,11 +128,11 @@ public class PlayerController : MonoBehaviour {
         Debug.DrawLine(transform.position, targetPosition, Color.red);
     }
 
-    private void StopAgents()
-    {
-        dog.agent.Stop();
-        enemy.agent.Stop();
-    }
+    //private void StopAgents()
+    //{
+    //    dog.agent.Stop();
+    //    enemy.agent.Stop();
+    //}
 
     IEnumerator RetrasoGameOver()
     {
