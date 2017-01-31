@@ -23,9 +23,12 @@ public class PatrolEnemy : MonoBehaviour {
 
     //private GameController gameController;
 
+    private AudioSource soundEnemy;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
+        soundEnemy = GetComponent<AudioSource>();
         //gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
 
@@ -52,8 +55,10 @@ public class PatrolEnemy : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
+        soundEnemy.Play();
         Destroy(other.gameObject);
-        counterLifes--;      
+        counterLifes--;
+        
     }
 
     void GotoNextPoint()

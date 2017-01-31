@@ -26,6 +26,13 @@ public class PlayerController : MonoBehaviour {
     private PatrolDog dog;
     private PatrolEnemy enemy;
     //private GameController gameController;
+
+    
+    private AudioSource audioSource;
+    private bool condicionSonido;
+    public AudioClip perdiste;
+    public AudioClip risa;
+    public AudioSource recoger;
     
     
 
@@ -40,8 +47,11 @@ public class PlayerController : MonoBehaviour {
         enemy = GameObject.FindWithTag("Enemy").GetComponent<PatrolEnemy>();
         //gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         gameOver = GameObject.FindWithTag("Gameover");
+        audioSource = GetComponent<AudioSource>();
 
         gameOver.SetActive(false);
+        audioSource = GetComponent<AudioSource>();
+        condicionSonido = true;
         
         agent = GetComponent<NavMeshAgent>();
         targetPosition = this.transform.position;
@@ -55,12 +65,18 @@ public class PlayerController : MonoBehaviour {
         {
             SetTargetPosition();
         }
-        else if (enemy.counterLifes == 0)
+        else if (enemy.counterLifes == 0 && condicionSonido)
         {
+            audioSource.loop = false;
+            audioSource.playOnAwake = false;
+            audioSource.clip = perdiste;
+            audioSource.Play();            
             //Cambia a escena de reiniciar o pued invocar un canvas con un mensaje.
             StopAgents();
-            gameOver.SetActive(true);
+            StartCoroutine(RetrasoGameOver());
             finalScore.text = "Score: " + score;
+
+            condicionSonido = false;
             
         }
         else
@@ -72,9 +88,9 @@ public class PlayerController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
+        recoger.Play();
         Destroy(other.gameObject);
         score++;
-        Debug.Log(score);
         scoreText.text = "Puntos: " + score;
     }
 
@@ -102,5 +118,13 @@ public class PlayerController : MonoBehaviour {
     {
         dog.agent.Stop();
         enemy.agent.Stop();
+    }
+
+    IEnumerator RetrasoGameOver()
+    {
+        yield return new WaitForSeconds(2f);
+        gameOver.SetActive(true);
+        audioSource.clip = risa;
+        audioSource.Play();
     }
 }
