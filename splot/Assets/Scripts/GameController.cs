@@ -18,6 +18,7 @@ public class GameController : MonoBehaviour {
 
     public void CambiarScena(int escena)
     {
+
         SceneManager.LoadScene(escena);
     }
 
