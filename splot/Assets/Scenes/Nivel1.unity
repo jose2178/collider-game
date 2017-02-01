@@ -92,6 +92,11 @@ NavMeshSettings:
     cellSize: 0.16666667
     accuratePlacement: 0
   m_NavMeshData: {fileID: 23800000, guid: a56c53ec51f40fd44a53d717cfe7e21c, type: 2}
+--- !u!95 &286747442 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 95154454000506952, guid: 4eb32e44b59ccdf409312ba758a6a16d,
+    type: 2}
+  m_PrefabInternal: {fileID: 648570097}
 --- !u!1001 &309127365
 Prefab:
   m_ObjectHideFlags: 0
@@ -734,27 +739,18 @@ Prefab:
       propertyPath: gameOver
       value: 
       objectReference: {fileID: 1516591502}
+    - target: {fileID: 111914117389357578, guid: 4eb32e44b59ccdf409312ba758a6a16d,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 114290817316924994, guid: 4eb32e44b59ccdf409312ba758a6a16d,
         type: 2}
-      propertyPath: lifes
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 195388977267903702, guid: 4eb32e44b59ccdf409312ba758a6a16d,
-        type: 2}
-      propertyPath: m_Speed
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 195388977267903702, guid: 4eb32e44b59ccdf409312ba758a6a16d,
-        type: 2}
-      propertyPath: m_AngularSpeed
-      value: 360
-      objectReference: {fileID: 0}
-    - target: {fileID: 195388977267903702, guid: 4eb32e44b59ccdf409312ba758a6a16d,
-        type: 2}
-      propertyPath: m_StoppingDistance
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 286747442}
+    m_RemovedComponents:
+    - {fileID: 111914117389357578, guid: 4eb32e44b59ccdf409312ba758a6a16d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 4eb32e44b59ccdf409312ba758a6a16d, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &744679905 stripped
@@ -1427,8 +1423,14 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 7.72
       objectReference: {fileID: 0}
+    - target: {fileID: 195166015243292892, guid: 883fd2224adfe3c4c854125b5e93e8e2,
+        type: 2}
+      propertyPath: m_AngularSpeed
+      value: 520
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114804180983916576, guid: 883fd2224adfe3c4c854125b5e93e8e2, type: 2}
+    - {fileID: 111376522320729986, guid: 883fd2224adfe3c4c854125b5e93e8e2, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 883fd2224adfe3c4c854125b5e93e8e2, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1318376892 stripped
@@ -1452,7 +1454,6 @@ MonoBehaviour:
   - {fileID: 561776900}
   - {fileID: 2116657374}
   - {fileID: 1396291302}
-  rateTime: 0
   agent: {fileID: 1318376895}
 --- !u!195 &1318376895 stripped
 NavMeshAgent:
@@ -1827,8 +1828,14 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 7.72
       objectReference: {fileID: 0}
+    - target: {fileID: 195166015243292892, guid: 883fd2224adfe3c4c854125b5e93e8e2,
+        type: 2}
+      propertyPath: m_AngularSpeed
+      value: 520
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114804180983916576, guid: 883fd2224adfe3c4c854125b5e93e8e2, type: 2}
+    - {fileID: 111376522320729986, guid: 883fd2224adfe3c4c854125b5e93e8e2, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 883fd2224adfe3c4c854125b5e93e8e2, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1528505452 stripped
@@ -1853,7 +1860,6 @@ MonoBehaviour:
   - {fileID: 1076604549}
   - {fileID: 1990350307}
   - {fileID: 1103245819}
-  rateTime: 0
   agent: {fileID: 1528505455}
 --- !u!195 &1528505455 stripped
 NavMeshAgent:
@@ -2157,8 +2163,14 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 7.72
       objectReference: {fileID: 0}
+    - target: {fileID: 195166015243292892, guid: 883fd2224adfe3c4c854125b5e93e8e2,
+        type: 2}
+      propertyPath: m_AngularSpeed
+      value: 520
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114804180983916576, guid: 883fd2224adfe3c4c854125b5e93e8e2, type: 2}
+    - {fileID: 111376522320729986, guid: 883fd2224adfe3c4c854125b5e93e8e2, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 883fd2224adfe3c4c854125b5e93e8e2, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1566724511 stripped
@@ -2183,7 +2195,6 @@ MonoBehaviour:
   - {fileID: 1285525720}
   - {fileID: 1285525719}
   - {fileID: 1285525718}
-  rateTime: 0
   agent: {fileID: 1566724514}
 --- !u!195 &1566724514 stripped
 NavMeshAgent:
@@ -2275,7 +2286,18 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: 7.72
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 195166015243292892, guid: 883fd2224adfe3c4c854125b5e93e8e2,
+        type: 2}
+      propertyPath: m_AngularSpeed
+      value: 520
+      objectReference: {fileID: 0}
+    - target: {fileID: 195166015243292892, guid: 883fd2224adfe3c4c854125b5e93e8e2,
+        type: 2}
+      propertyPath: m_Speed
+      value: 3.5
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 111376522320729986, guid: 883fd2224adfe3c4c854125b5e93e8e2, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 883fd2224adfe3c4c854125b5e93e8e2, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &2116657374 stripped

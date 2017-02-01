@@ -38,8 +38,9 @@ public class PlayerController : MonoBehaviour {
     private GameObject dogScene;
     private GameObject menuButton;
 
-    private Animator anim;
+    public Animator anim;
     int velocidad = Animator.StringToHash("velocidadPlayer");
+    int recogerAnim = Animator.StringToHash("recoger");
 
     void Start()
     {
@@ -127,8 +128,14 @@ public class PlayerController : MonoBehaviour {
 
     void OnTriggerEnter(Collider other)
     {
+                       
+        StartCoroutine(RestrasoComienzo());
+
         recoger.Play();
         Destroy(other.gameObject);
+        
+        StartCoroutine(RestrasoFinal());
+
         score++;
         if (lifes > 0)
             scoreText.text = "Puntos: " + score;
@@ -169,5 +176,19 @@ public class PlayerController : MonoBehaviour {
         gameOver.SetActive(true);
         audioSource.clip = risa;
         audioSource.Play();
+    }
+
+    IEnumerator RestrasoComienzo()
+    {
+        anim.SetBool("recoger", true);
+        yield return new WaitForSeconds(2f);
+    }
+
+    IEnumerator RestrasoFinal()
+    {
+        
+        yield return new WaitForSeconds(0.5f);
+        anim.SetBool("recoger", false);
+
     }
 }

@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class PatrolEnemy : MonoBehaviour {
 
     public Transform[] points;
-    public float rateTime;
-    private bool firstTime;
+    //public float rateTime;
+    //private bool firstTime;
     private int destPoint = 0;
     public NavMeshAgent agent;
     Vector3 position;
@@ -41,8 +41,8 @@ public class PatrolEnemy : MonoBehaviour {
         // Disabling auto-braking allows for continuous movement
         // between points (ie, the agent doesn't slow down as it
         // approaches a destination point).
-        agent.autoBraking = false;
-        firstTime = true;
+        agent.autoBraking = true;
+        //firstTime = true;
         //rateTime = rateTime + 2;
         GotoNextPoint();
 
@@ -99,21 +99,22 @@ public class PatrolEnemy : MonoBehaviour {
         position = points[destPoint].position;
         agent.SetDestination(position);
 
-        StartCoroutine(TimePoint());
+        //StartCoroutine(TimePoint());
+        SetPoint();
     }
 
-    IEnumerator TimePoint()
-    {
-        agent.Stop();
-        yield return new WaitForSeconds(rateTime);
-        if (firstTime)
-        {
-            rateTime = 0;
-            firstTime = false;
-        }
-        SetPoint();
-        agent.Resume();
-    }
+    //IEnumerator TimePoint()
+    //{
+    //    agent.Stop();
+    //    yield return new WaitForSeconds(rateTime);
+    //    if (firstTime)
+    //    {
+    //        rateTime = 0;
+    //        firstTime = false;
+    //    }
+    //    SetPoint();
+    //    agent.Resume();
+    //}
 
     IEnumerator TimeGroser()
     {
