@@ -184,7 +184,7 @@ ModelImporter:
       - path: 
         weight: 1
       - path: Boy:Hips
-        weight: 1
+        weight: 0
       - path: Boy:Hips/Boy:LeftUpLeg
         weight: 1
       - path: Boy:Hips/Boy:LeftUpLeg/Boy:LeftLeg
