@@ -43,7 +43,7 @@ public class PatrolEnemy : MonoBehaviour {
         // approaches a destination point).
         agent.autoBraking = false;
         firstTime = true;
-        rateTime = rateTime + 2;
+        //rateTime = rateTime + 2;
         GotoNextPoint();
 
         expresion.SetActive(false);

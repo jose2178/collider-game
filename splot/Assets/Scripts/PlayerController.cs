@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour {
     public AudioClip risa;
     public AudioSource recoger;
 
-    private GameObject enemyScene;
+    private GameObject[] enemyScene;
     private GameObject dogScene;
     private GameObject menuButton;
 
@@ -50,7 +50,10 @@ public class PlayerController : MonoBehaviour {
         agent = GetComponent<NavMeshAgent>();
         dog = GameObject.FindWithTag("Dog").GetComponent<PatrolDog>();
         enemy = GameObject.FindWithTag("Enemy").GetComponent<PatrolEnemy>();
-        enemyScene = GameObject.FindWithTag("Enemy");
+
+        enemyScene = GameObject.FindGameObjectsWithTag("Enemy");
+        //enemyScene = GameObject.FindWithTag("Enemy");
+
         dogScene = GameObject.FindWithTag("Dog");
         menuButton = GameObject.FindWithTag("MenuButton");
 
@@ -84,10 +87,14 @@ public class PlayerController : MonoBehaviour {
             lifeText.text = "";
             scoreText.text = "";
 
-            enemyScene.SetActive(false);
+            foreach (GameObject enemigo in enemyScene)
+            {
+                enemigo.SetActive(false);
+            }
+
             dogScene.SetActive(false);
             menuButton.SetActive(false);
-
+            agent.Stop();
 
             audioSource.playOnAwake = false;
             audioSource.clip = perdiste;
@@ -97,7 +104,7 @@ public class PlayerController : MonoBehaviour {
             StartCoroutine(RetrasoGameOver());
             
             finalScore.text = "Score: " + score;
-
+            
             condicionSonido = false;
             
         }
