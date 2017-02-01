@@ -21,18 +21,21 @@ public class PatrolDog : MonoBehaviour {
     int velocidad = Animator.StringToHash("Velocidad");
 
     private AudioSource sonidoCaca;
+    private GameObject expresion;
+
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
         sonidoCaca = GetComponent<AudioSource>();
-        
+        expresion = transform.Find("Expresion").gameObject;
+
         // Disabling auto-braking allows for continuous movement
         // between points (ie, the agent doesn't slow down as it
         // approaches a destination point).
         agent.autoBraking = false;
-
+        expresion.SetActive(false);
         firstTime = true;
         rateTime = rateTime + 2;
 
@@ -68,12 +71,20 @@ public class PatrolDog : MonoBehaviour {
         SetPoint();
         Instantiate(poop, dogTail.position, Quaternion.Euler(-90,0,0));
         sonidoCaca.Play();
+        StartCoroutine(TimePuff());
         if (firstTime)
         {
             rateTime -= 2;
             firstTime = false;
         }
         agent.Resume();
+    }
+
+    IEnumerator TimePuff()
+    {
+        expresion.SetActive(true);
+        yield return new WaitForSeconds(.5f);
+        expresion.SetActive(false);
     }
 
     void SetPoint()
@@ -84,8 +95,8 @@ public class PatrolDog : MonoBehaviour {
 
     void Update()
     {
-        
-        
+        expresion.transform.LookAt(Camera.main.transform.position);
+
         // Choose the next destination point when the agent gets
         // close to the current one.
         if (agent.remainingDistance < 0.4f)

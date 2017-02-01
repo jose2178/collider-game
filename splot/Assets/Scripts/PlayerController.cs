@@ -123,7 +123,11 @@ public class PlayerController : MonoBehaviour {
         recoger.Play();
         Destroy(other.gameObject);
         score++;
-        scoreText.text = "Puntos: " + score;
+        if (lifes > 0)
+            scoreText.text = "Puntos: " + score;
+        else
+            scoreText.text = "";
+
     }
 
     private void SetTargetPosition()
