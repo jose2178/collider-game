@@ -790,9 +790,9 @@ Light:
   m_CookieSize: 10
   m_Shadows:
     m_Type: 2
-    m_Resolution: -1
+    m_Resolution: 3
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.6
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -923,7 +923,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 12.84
+  orthographic size: 9.12
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -944,7 +944,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 902450910}
   m_LocalRotation: {x: 0.2432853, y: -0.39509505, z: 0.1093533, w: 0.8790643}
-  m_LocalPosition: {x: 51.1, y: 33.97, z: -38.67}
+  m_LocalPosition: {x: 53.63, y: 31.26, z: -38.26}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1503,6 +1503,11 @@ Prefab:
     - target: {fileID: 4023108233533672, guid: 5b881dff7d2ae144a882584bf7f2b7e5, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 23965737154543050, guid: 5b881dff7d2ae144a882584bf7f2b7e5,
+        type: 2}
+      propertyPath: m_ReceiveShadows
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 95728161822163398, guid: 5b881dff7d2ae144a882584bf7f2b7e5, type: 2}
