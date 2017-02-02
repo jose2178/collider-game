@@ -677,6 +677,16 @@ Prefab:
       propertyPath: m_FontData.m_Alignment
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114974798267232956, guid: 05a92216b06f1a5479db80a32bac43ef,
+        type: 2}
+      propertyPath: m_FontData.m_VerticalOverflow
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114974798267232956, guid: 05a92216b06f1a5479db80a32bac43ef,
+        type: 2}
+      propertyPath: m_FontData.m_HorizontalOverflow
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 05a92216b06f1a5479db80a32bac43ef, type: 2}
   m_IsPrefabParent: 0
@@ -792,7 +802,7 @@ Light:
     m_Type: 2
     m_Resolution: 3
     m_CustomResolution: -1
-    m_Strength: 0.6
+    m_Strength: 0.936
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -923,7 +933,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 9.12
+  orthographic size: 10.11
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
